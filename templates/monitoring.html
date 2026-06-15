@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Monitoring</title>
+</head>
+
+<body style="background:#0f172a;color:white;font-family:Arial;padding:40px;">
+
+<h1>🎥 Student Monitoring</h1>
+
+<div style="display:flex;gap:50px;">
+
+    <div>
+        <h2>Camera Preview</h2>
+        <a href="/capture">
+            <button type="button"
+                    style="
+                        padding:12px 20px;
+                        font-size:16px;
+                        cursor:pointer;
+                        margin-bottom:15px;
+                     ">
+        🎥 Start Camera
+    </button>
+</a>
+
+<br>
+
+        <img src="{{ url_for('static', filename='captured_student.jpg') }}?{{ range(1,100000)|random }}"
+     width="400"
+     style="
+        border-radius:15px;
+        border:3px solid #2563eb;
+        box-shadow:0 0 20px rgba(37,99,235,0.5);
+     ">
+    </div>
+
+    <div>
+        <h2>🧠 Recognized Student</h2>
+        <h3 id="studentName" style="color:#38bdf8;">Waiting...</h3>
+
+        <form method="POST">
+
+            <h2>Student</h2>
+
+            <select name="student_id" required>
+
+                {% for student in students %}
+
+                <option value="{{ student.id }}">
+                    {{ student.student_name }}
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+            <br><br>
+
+            <h2>Event</h2>
+
+            <select name="event_type">
+
+                <option value="Entry">Entry</option>
+
+                <option value="Exit">Exit</option>
+
+            </select>
+
+            <br><br>
+
+            <button type="submit">
+                Confirm
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+{% if message %}
+    <div style="margin-top:20px;padding:15px;background:#1f2937;border-radius:10px;">
+        <h2>📱 System Response</h2>
+        <p style="color:#38bdf8;">{{ message }}</p>
+    </div>
+{% endif %}
+{% if message %}
+    <div style="margin-top:20px;padding:15px;background:#1f2937;border-radius:10px;">
+        <h2>📱 System Response</h2>
+        <p style="color:#38bdf8;">{{ message }}</p>
+    </div>
+{% endif %}
+<script>
+
+async function updateRecognition() {
+
+    let res = await fetch("/recognize", { method: "POST" });
+
+    let data = await res.json();
+
+    document.getElementById("studentName").innerText = data.name;
+
+}
+
+setInterval(updateRecognition, 3000);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Logs</title>
+    <meta http-equiv="refresh" content="3">
+</head>
+
+<body style="background:#0f172a;color:white;font-family:Arial;padding:30px;">
+
+<h1>🚨 Event Logs</h1>
+
+<table border="1" cellpadding="10" style="border-collapse:collapse;width:100%;">
+    <tr style="background:#ef4444;">
+        <th>Student ID</th>
+        <th>Name</th>
+        <th>Event</th>
+        <th>Notification</th>
+    </tr>
+
+    {% for log in logs %}
+    <tr>
+        <td>{{ log.student_no }}</td>
+        <td>{{ log.student_name }}</td>
+        <td>{{ log.event_type }}</td>
+        <td>{{ log.notification_sent }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="sidebar">
+    <h2>🛡️ AI Safety</h2>
+
+    <a href="#">🏠 Dashboard</a>
+    <a href="/students">👨‍🎓 Students</a>
+    <a href="/attendance">📝 Attendance</a>
+    <a href="/alerts">🚨 Alerts</a>
+    <a href="/eventlogs">📜 Event Logs</a>
+    <a href="/monitoring">🎥 Monitoring</a>
+</div>
+
+<div class="main">
+
+    <div class="topbar">
+        <h1>Security Dashboard</h1>
+        <div class="status">
+            ● System Online
+        </div>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Total Students</h3>
+            <h2>124</h2>
+        </div>
+
+        <div class="card">
+            <h3>Today's Attendance</h3>
+            <h2>98%</h2>
+        </div>
+
+        <div class="card alert-card">
+            <h3>Active Alerts</h3>
+            <h2>3</h2>
+        </div>
+
+    </div>
+
+    <div class="activity">
+
+        <h2>Recent Activity</h2>
+
+        <ul>
+            <li>✔ Student entered campus</li>
+            <li>✔ Attendance recorded</li>
+            <li>⚠ Unauthorized area alert</li>
+            <li>✔ Parent notification sent</li>
+        </ul>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance</title>
+    <meta http-equiv="refresh" content="5">
+</head>
+
+<body style="background:#0f172a;color:white;font-family:Arial;padding:30px;">
+
+<h1>📊 Attendance Records</h1>
+
+<table border="1" cellpadding="10" style="border-collapse:collapse;width:100%;">
+    <tr style="background:#2563eb;">
+        <th>Student ID</th>
+        <th>Event Type</th>
+        <th>Confidence</th>
+    </tr>
+
+    {% for log in logs %}
+    <tr>
+        <td>{{ log.student_id }}</td>
+        <td>{{ log.event_type }}</td>
+        <td>{{ log.recognition_confidence }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
